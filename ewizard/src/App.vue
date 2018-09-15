@@ -1,50 +1,38 @@
 <i18n>
-  {
-  "en": {
-  "hello": "hello world!"
-  },
-  "ja": {
-  "hello": "こんにちは、世界！"
-  }
-  }
+	{
+		"en": {
+			"hello": "hello world!"
+		},
+		"ru": {
+			"hello": "Привет мир"
+		}
+	}
 </i18n>
 <template>
-  <div id="app">
-    <label for="locale">locale</label>
-    <select v-model="locale">
-      <option>en</option>
-      <option>ja</option>
-    </select>
-    <p>message: {{ $t('hello') }}</p>
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div id="app">
+		<v-header msg="Welcome to Your Vue.js App"/>
+		<v-aside/>
+		<p>message: {{ $t('hello') }}</p>
+		<img alt="Vue logo" src="./assets/logo.png">
+
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+	import vHeader from './components/v-header';
+	import vAside from './components/v-aside';
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  },
-	data () { return { locale: 'en' } },
-	watch: {
-		locale (val) {
-			this.$i18n.locale = val
+	export default {
+		name: 'app',
+		components: {
+			vHeader,
+			vAside
 		}
 	}
-}
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+	@import '../node_modules/@mdi/font/css/materialdesignicons.css';
+	@import 'common/styles/main.css';
+
 </style>
