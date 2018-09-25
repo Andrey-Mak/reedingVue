@@ -13,7 +13,7 @@
 		<v-header msg="Welcome to Your Vue.js App"/>
 		<v-aside/>
 		<p>message: {{ $t('hello') }}</p>
-		<img alt="Vue logo" src="./assets/logo.png">
+		<button @click=""><i class="material-icons">face</i></button>
 
 	</div>
 </template>

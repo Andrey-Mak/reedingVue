@@ -11,7 +11,7 @@
 	}
 </i18n>
 <template>
-	<div class="v-aside">
+	<div class="v-aside" v-if="isShowed">
 		<div class="overlay"></div>
 		<div class="menu-block">
 			<h2 v-t="'eWizard'"></h2>
@@ -24,7 +24,7 @@
 	export default {
 		name: 'md-toolbar',
 		props: {
-			msg: String
+
 		},
 		data() {
 			return {locale: 'en'}
@@ -32,6 +32,11 @@
 		methods: {
 			openMainMenu(){
 				console.log(this.$i18n)
+			}
+		},
+		computed: {
+            isShowed() {
+                return this.$store.state.isMenu;
 			}
 		},
 		watch: {
