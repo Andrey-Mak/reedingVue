@@ -1,53 +1,79 @@
-<i18n>
-	{
-		"en": {
-			"eWizard": "eWizard Online",
-			"h3": "Контент"
-		},
-		"ru": {
-			"eWizard": "eМастер Онлайн",
-			"h3": "Контент"
-		}
-	}
-</i18n>
 <template>
-	<div class="v-aside" v-if="isShowed">
-		<div class="overlay"></div>
+	<div class="v-aside" v-if="$store.state.isMenu">
+		<div class="overlay" @click="$store.commit('menuToggle', false)"></div>
 		<div class="menu-block">
-			<h2 v-t="'eWizard'"></h2>
-			<h3 v-t="'h3'"></h3>
+			<h2 v-t="'appCaption'"></h2>
+			<h3 v-t="'content'"></h3>
+			<ul>
+				<li class="list-item" v-for="item in list">
+					<i class="icon mdi" :class="item.icon"></i>
+					<p v-t="item.text"></p>
+				</li>
+			</ul>
 		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'md-toolbar',
-		props: {
-
-		},
+		name: 'v-aside',
 		data() {
-			return {locale: 'en'}
-		},
-		methods: {
-			openMainMenu(){
-				console.log(this.$i18n)
-			}
-		},
-		computed: {
-            isShowed() {
-                return this.$store.state.isMenu;
-			}
-		},
-		watch: {
-			locale(val) {
-				this.$i18n.locale = val;
+			return {
+				list: [
+					{
+						"text": "eDetailers",
+						"icon": "mdi-inbox"
+					},
+					{
+						"text": "emailTemplates",
+						"icon": "mdi-email"
+					},
+					{
+						"text": "callFlows",
+						"icon": "mdi-inbox"
+					},
+					{
+						"text": "digitalAssets",
+						"icon": "mdi-movie"
+					},
+					{
+						"text": "surveys",
+						"icon": "mdi-clipboard-check"
+					},
+					{
+						"text": "microsites",
+						"icon": "mdi-coffee"
+					},
+					{
+						"text": "services",
+						"icon": "mdi-motorbike"
+					},
+					{
+						"text": "globalStore",
+						"icon": "mdi-web"
+					},
+					{
+						"text": "pulse",
+						"icon": "mdi-food"
+					},
+					{
+						"text": "components",
+						"icon": "mdi-clippy"
+					},
+					{
+						"text": "reviews",
+						"icon": "mdi-android"
+					}
+				]
 			}
 		}
 	}
 </script>
 
 <style scoped>
+	.v-aside{
+		z-index: 10;
+	}
 	.overlay,
 	.v-aside{
 		position: absolute;
@@ -55,8 +81,6 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		pointer-events: none;
-		z-index: 50;
 	}
 	.overlay{
 		background-color: rgba(0,0,0,0.2);
@@ -74,5 +98,27 @@
 	h2{
 		font-size: 18px;
 		line-height: 1.8;
+	}
+	h3{
+		font-size: 18px;
+		margin: 10px;
+	}
+	.list-item{
+		min-height: 36px;
+		height: 36px;
+		padding-left: 30px;
+		font-size: 15px;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+	}
+	.list-item:hover{
+		background: #008bc5;
+		color: #fff;
+	}
+	.icon{
+		font-size: 20px;
+		display: inline-block;
+		margin-right: 10px;
 	}
 </style>

@@ -1,22 +1,13 @@
-<i18n>
-	{
-		"en": {
-			"eWizard": "eWizard Online"
-		},
-		"ru": {
-			"eWizard": "eМастер Онлайн"
-		}
-	}
-</i18n>
 <template>
 	<div class="v-header flex">
-		<button class="md-icon-button md-button" type="button" @click="openMainMenu()">
+		<button class="md-icon-button md-button" type="button" @click="$store.commit('menuToggle')">
 			<i class="mdi mdi-hc-fw mdi-menu"></i>
 		</button>
-		<h2 class="main-header" v-t="'eWizard'"></h2>
+		<h2 class="main-header" v-t="'appCaption'"></h2>
 
 		<select v-model="locale">
 			<option>en</option>
+			<option>ua</option>
 			<option>ru</option>
 		</select>
 	</div>
@@ -27,11 +18,6 @@
 		name: 'v-header',
 		data() {
 			return {locale: 'en'}
-		},
-		methods: {
-			openMainMenu(){
-				console.log(this.$i18n)
-			}
 		},
 		watch: {
 			locale(val) {
@@ -65,5 +51,6 @@
 	h2{
 		font-size: 18px;
 		line-height: 1.8;
+		margin-right: 200px;
 	}
 </style>
