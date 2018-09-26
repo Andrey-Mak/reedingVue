@@ -5,9 +5,11 @@
 			<h2 v-t="'appCaption'"></h2>
 			<h3 v-t="'content'"></h3>
 			<ul>
-				<li class="list-item" v-for="item in list">
-					<i class="icon mdi" :class="item.icon"></i>
-					<p v-t="item.text"></p>
+				<li class="list-item" v-for="item in list" @click="$store.commit('menuToggle', false)">
+					<router-link class="router-link" :to="`/${item.text}`">
+						<i class="icon mdi" :class="item.icon"></i>
+						<p v-t="item.text"></p>
+					</router-link>
 				</li>
 			</ul>
 		</div>
@@ -120,5 +122,11 @@
 		font-size: 20px;
 		display: inline-block;
 		margin-right: 10px;
+	}
+	.router-link{
+		color: #fff;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
 	}
 </style>

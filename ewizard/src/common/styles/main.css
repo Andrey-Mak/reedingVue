@@ -11,7 +11,13 @@
 .flex {
 	display: flex;
 }
-
+.toolbar{
+	font-size: 18px;
+	padding: 10px 25px;
+	background: #fff;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+	z-index: 2;
+}
 
 
 

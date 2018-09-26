@@ -12,8 +12,7 @@
 	<div id="app">
 		<v-header msg="Welcome to Your Vue.js App"/>
 		<v-aside/>
-		<p>message: {{ $t('hello') }}</p>
-		<button @click=""><i class="material-icons">face</i></button>
+		<router-view></router-view>
 
 	</div>
 </template>
